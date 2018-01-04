@@ -2,10 +2,10 @@ ZSH=$HOME/.oh-my-zsh
 
 # You can change the theme with another one:
 #   https://github.com/robbyrussell/oh-my-zsh/wiki/themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Useful plugins for Rails development with Sublime Text
-plugins=(gitfast brew last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search)
+plugins=(gitfast brew last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search zsh-autosuggestions)
 
 # Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -27,4 +27,14 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
